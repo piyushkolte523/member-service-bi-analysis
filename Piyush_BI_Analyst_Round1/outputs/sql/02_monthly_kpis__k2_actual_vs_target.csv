@@ -1,0 +1,25 @@
+month,kpi,actual,target,variance,direction,status
+2026-01,Average_Wait_Seconds,36.156,65.0,-28.844,Lower is better,On/Better than target
+2026-02,Average_Wait_Seconds,36.076,65.0,-28.924,Lower is better,On/Better than target
+2026-03,Average_Wait_Seconds,38.156,65.0,-26.844,Lower is better,On/Better than target
+2026-04,Average_Wait_Seconds,37.986,65.0,-27.014,Lower is better,On/Better than target
+2026-05,Average_Wait_Seconds,54.111,65.0,-10.889,Lower is better,On/Better than target
+2026-06,Average_Wait_Seconds,53.055,65.0,-11.945,Lower is better,On/Better than target
+2026-01,Resolution_Rate,0.795,0.82,-0.025,Higher is better,Missed target
+2026-02,Resolution_Rate,0.802,0.82,-0.018,Higher is better,Missed target
+2026-03,Resolution_Rate,0.82,0.82,-0.0,Higher is better,Missed target
+2026-04,Resolution_Rate,0.801,0.82,-0.019,Higher is better,Missed target
+2026-05,Resolution_Rate,0.782,0.82,-0.038,Higher is better,Missed target
+2026-06,Resolution_Rate,0.773,0.82,-0.047,Higher is better,Missed target
+2026-01,Satisfaction,2.688,4.2,-1.513,Higher is better,Missed target
+2026-02,Satisfaction,2.956,4.2,-1.244,Higher is better,Missed target
+2026-03,Satisfaction,2.899,4.2,-1.301,Higher is better,Missed target
+2026-04,Satisfaction,2.671,4.2,-1.529,Higher is better,Missed target
+2026-05,Satisfaction,2.616,4.2,-1.584,Higher is better,Missed target
+2026-06,Satisfaction,2.701,4.2,-1.499,Higher is better,Missed target
+2026-01,Transfer_Rate,0.075,0.08,-0.005,Lower is better,On/Better than target
+2026-02,Transfer_Rate,0.107,0.08,0.027,Lower is better,Missed target
+2026-03,Transfer_Rate,0.081,0.08,0.001,Lower is better,Missed target
+2026-04,Transfer_Rate,0.108,0.08,0.028,Lower is better,Missed target
+2026-05,Transfer_Rate,0.086,0.08,0.006,Lower is better,Missed target
+2026-06,Transfer_Rate,0.102,0.08,0.022,Lower is better,Missed target

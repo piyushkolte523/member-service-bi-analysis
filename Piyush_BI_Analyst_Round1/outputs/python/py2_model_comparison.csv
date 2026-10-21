@@ -1,0 +1,4 @@
+model,CV AUC (mean),CV AUC (sd),CV Brier,Brier skill vs base rate
+A  Context only (no wait),0.607,0.051,0.046,0.004
+B  Wait spline only,0.66,0.051,0.044,0.046
+C  Wait spline + context + hot-spot x period,0.652,0.051,0.044,0.047

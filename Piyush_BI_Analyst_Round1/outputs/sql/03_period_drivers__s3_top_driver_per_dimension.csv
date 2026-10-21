@@ -1,0 +1,41 @@
+metric,total_change,dimension,top_contributor,value_jan_apr,value_may_jun,top_share_of_change,dimension_concentration_rank
+7-day repeat rate,0.0681,Digital adoption,Medium (0.40-0.69),0.316,0.403,0.761,1
+7-day repeat rate,0.0681,Tenure band,2-5 yrs,0.315,0.424,0.657,2
+7-day repeat rate,0.0681,Team,Bravo,0.286,0.418,0.541,3
+7-day repeat rate,0.0681,Segment,Emerging,0.32,0.425,0.499,4
+7-day repeat rate,0.0681,Channel,Phone,0.331,0.399,0.481,5
+7-day repeat rate,0.0681,Region,South,0.303,0.386,0.461,6
+7-day repeat rate,0.0681,Product,Credit Card,0.304,0.398,0.36,7
+7-day repeat rate,0.0681,Reason,Payment,0.319,0.394,0.343,8
+Abandonment rate,0.0331,Channel,Phone,0.031,0.096,0.966,1
+Abandonment rate,0.0331,Reason,Payment,0.04,0.139,0.624,2
+Abandonment rate,0.0331,Product,Credit Card,0.035,0.117,0.587,3
+Abandonment rate,0.0331,Digital adoption,Medium (0.40-0.69),0.035,0.071,0.544,4
+Abandonment rate,0.0331,Segment,Mass,0.024,0.073,0.543,5
+Abandonment rate,0.0331,Team,Charlie,0.029,0.087,0.457,6
+Abandonment rate,0.0331,Tenure band,2-5 yrs,0.03,0.069,0.455,7
+Abandonment rate,0.0331,Region,South,0.035,0.077,0.423,8
+Avg satisfaction,-0.1466,Channel,Phone,2.8,2.468,1.28,1
+Avg satisfaction,-0.1466,Tenure band,2-5 yrs,2.868,2.561,1.141,2
+Avg satisfaction,-0.1466,Digital adoption,Low (<0.40),2.844,2.743,1.034,3
+Avg satisfaction,-0.1466,Team,Alpha,2.836,2.55,1.014,4
+Avg satisfaction,-0.1466,Reason,Loan Servicing,2.957,2.38,0.917,5
+Avg satisfaction,-0.1466,Region,Central,2.858,2.624,0.782,6
+Avg satisfaction,-0.1466,Product,Credit Card,2.748,2.384,0.775,7
+Avg satisfaction,-0.1466,Segment,Mass,2.763,2.752,0.719,8
+Avg wait (s),16.4797,Channel,Phone,50.89,83.151,0.96,1
+Avg wait (s),16.4797,Product,Credit Card,36.911,80.036,0.617,2
+Avg wait (s),16.4797,Digital adoption,Medium (0.40-0.69),37.148,54.834,0.567,3
+Avg wait (s),16.4797,Reason,Payment,37.408,76.101,0.524,4
+Avg wait (s),16.4797,Tenure band,2-5 yrs,37.093,55.266,0.44,5
+Avg wait (s),16.4797,Segment,Mass,36.921,55.717,0.425,6
+Avg wait (s),16.4797,Region,Central,35.657,53.759,0.396,7
+Avg wait (s),16.4797,Team,Charlie,37.205,58.544,0.335,8
+Resolution rate,-0.0268,Tenure band,5-10 yrs,0.809,0.769,1.282,1
+Resolution rate,-0.0268,Channel,Phone,0.813,0.754,1.196,2
+Resolution rate,-0.0268,Digital adoption,Low (<0.40),0.804,0.798,1.169,3
+Resolution rate,-0.0268,Region,North,0.8,0.768,1.128,4
+Resolution rate,-0.0268,Team,Alpha,0.796,0.767,1.045,5
+Resolution rate,-0.0268,Segment,Established,0.808,0.752,0.828,6
+Resolution rate,-0.0268,Product,Credit Card,0.804,0.717,0.779,7
+Resolution rate,-0.0268,Reason,Account Inquiry,0.818,0.774,0.716,8

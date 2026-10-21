@@ -1,0 +1,5 @@
+kpi,months_on_target,months,avg_jan_apr,avg_may_jun,target
+Average_Wait_Seconds,6,6,37.094,53.583,65.0
+Resolution_Rate,0,6,0.805,0.778,0.82
+Satisfaction,0,6,2.803,2.659,4.2
+Transfer_Rate,1,6,0.093,0.094,0.08

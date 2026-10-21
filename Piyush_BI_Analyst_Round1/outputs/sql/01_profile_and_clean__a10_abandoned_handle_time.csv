@@ -1,0 +1,5 @@
+Outcome,rows,avg_handle_seconds,min_handle_seconds
+Abandoned,194,439.2,90.0
+Escalated,258,424.1,128.0
+Resolved,3180,423.6,90.0
+Transferred,372,433.0,108.0

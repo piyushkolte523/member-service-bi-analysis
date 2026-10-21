@@ -1,0 +1,32 @@
+field,raw_value,row_count,normalized_value,needs_standardizing
+Channel,Branch,504,branch,False
+Channel,Chat,547,chat,False
+Channel,Digital,963,digital,False
+Channel,Phone,1982,phone,True
+Channel,phone,8,phone,True
+Outcome,Abandoned,194,abandoned,False
+Outcome,Escalated,258,escalated,False
+Outcome,Resolved,3180,resolved,False
+Outcome,Transferred,372,transferred,False
+Product,Auto Loan,668,auto loan,False
+Product,Checking,1039,checking,False
+Product,Credit Card,946,credit card,False
+Product,Digital Banking,840,digital banking,False
+Product,Personal Loan,511,personal loan,False
+Reason,Access/Login,645,access/login,False
+Reason,Account Inquiry,597,account inquiry,False
+Reason,Card Issue,672,card issue,False
+Reason,Loan Servicing,659,loan servicing,False
+Reason,Payment,736,payment,False
+Reason,Transfer,695,transfer,False
+Region,Central,130,central,False
+Region,North,140,north,False
+Region,South,130,south,False
+Segment,Affluent,48,affluent,False
+Segment,Emerging,114,emerging,False
+Segment,Established,85,established,False
+Segment,Mass,153,mass,False
+Team,Alpha,1003,alpha,False
+Team,Bravo,986,bravo,False
+Team,Charlie,1031,charlie,False
+Team,Delta,984,delta,False

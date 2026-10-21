@@ -1,0 +1,8 @@
+field,cast_failures,min_val,median_val,max_val,negative_vals
+Wait_Seconds,0,0.0,34.0,249.0,0
+Handle_Seconds,0,90.0,425.0,996.0,0
+Satisfaction_1_5,0,1.0,3.0,5.0,0
+Estimated_Cost,0,1.08,5.27,12.17,0
+Tenure_Years,0,0.3,4.8,26.8,0
+Products_Held,0,1.0,3.0,5.0,0
+Digital_Adoption_Score,0,0.03,0.57,0.99,0

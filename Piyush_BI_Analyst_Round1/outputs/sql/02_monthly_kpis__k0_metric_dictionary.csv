@@ -1,0 +1,18 @@
+metric,definition,population,direction
+Interaction volume,COUNT of de-duplicated interactions,All rows,Trend only
+Unique members,COUNT DISTINCT member_id contacting in the month,All rows,Trend only
+Contacts per member,Interactions / unique members,All rows,Lower is better
+Average wait (s),AVG wait_seconds,Rows with wait recorded (7 NULL rows excluded),Lower is better; target 65s
+P90 wait (s),90th percentile of wait_seconds - the experience of the slowest 10%,Rows with wait recorded,Lower is better
+% waits > 2 min,Share of contacts with wait_seconds > 120,Rows with wait recorded,Lower is better
+Average handle time (s),AVG handle_seconds,Non-abandoned rows (no agent work on abandoned),"Context, not a goal"
+Resolution rate,Resolved / all interactions,All rows (abandoned count as not resolved),Higher is better; target 82%
+Transfer rate,Transferred / all interactions,All rows,Lower is better; target 8%
+Escalation rate,Escalated / all interactions,All rows,Lower is better
+Abandonment rate,Abandoned / all interactions,All rows,Lower is better
+Avg satisfaction (1-5),AVG satisfaction among survey responses,Rows with a survey response only (~28%),Higher is better; target 4.2
+Survey response rate,Rows with satisfaction / all rows,All rows,Coverage indicator
+% satisfied (4-5),Responses scoring 4 or 5 / all responses,Rows with a survey response,Higher is better
+7-day repeat-contact rate,"Share of contacts followed by ANOTHER contact from the same member within 7 calendar days (any channel, any reason)",Contacts dated <= 2026-06-23 (full 7-day window observable),Lower is better
+7-day same-reason repeat,"As above, but the next contact must have the same reason - stricter proxy for ""not fixed first time""",Contacts dated <= 2026-06-23,Lower is better
+Cost per resolved contact,Total estimated cost / resolved interactions - what it really costs to get one issue resolved,All rows,Lower is better

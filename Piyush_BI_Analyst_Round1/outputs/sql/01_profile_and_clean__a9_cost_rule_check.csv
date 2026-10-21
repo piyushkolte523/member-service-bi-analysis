@@ -1,0 +1,5 @@
+Outcome,rows,min_residual,max_residual
+Abandoned,194,-0.0,0.0
+Escalated,258,-0.0,0.0
+Resolved,3180,-0.0,0.0
+Transferred,372,3.0,3.0

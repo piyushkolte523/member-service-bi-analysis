@@ -1,0 +1,34 @@
+dimension,dim_value,contacts_per_month_jan_apr,contacts_per_month_may_jun,added_per_month,growth_pct,share_of_growth,growth_rank
+Channel,Phone,303.5,384.5,81.0,0.267,0.481,1
+Channel,Digital,148.0,183.5,35.5,0.24,0.211,2
+Channel,Chat,80.5,112.0,31.5,0.391,0.187,3
+Channel,Branch,77.3,97.5,20.3,0.262,0.12,4
+Digital adoption,Medium (0.40-0.69),259.0,357.0,98.0,0.378,0.582,1
+Digital adoption,High (0.70+),179.8,232.0,52.3,0.291,0.311,2
+Digital adoption,Low (<0.40),170.5,188.5,18.0,0.106,0.107,3
+Product,Digital Banking,124.5,169.5,45.0,0.361,0.267,1
+Product,Credit Card,144.0,183.5,39.5,0.274,0.235,2
+Product,Checking,161.3,196.0,34.8,0.216,0.207,3
+Product,Personal Loan,76.3,102.0,25.8,0.338,0.153,4
+Product,Auto Loan,103.3,126.5,23.3,0.225,0.138,5
+Reason,Payment,105.8,155.0,49.3,0.466,0.293,1
+Reason,Transfer,101.3,143.5,42.3,0.417,0.251,2
+Reason,Card Issue,103.5,128.0,24.5,0.237,0.146,3
+Reason,Access/Login,99.3,123.0,23.8,0.239,0.141,4
+Reason,Loan Servicing,104.8,119.5,14.8,0.141,0.088,5
+Reason,Account Inquiry,94.8,108.5,13.8,0.145,0.082,6
+Region,Central,196.0,260.0,64.0,0.327,0.38,1
+Region,South,190.5,252.0,61.5,0.323,0.366,2
+Region,North,222.8,265.5,42.8,0.192,0.254,3
+Segment,Mass,225.5,288.5,63.0,0.279,0.374,1
+Segment,Emerging,174.0,234.0,60.0,0.345,0.357,2
+Segment,Established,135.5,163.0,27.5,0.203,0.163,3
+Segment,Affluent,74.3,92.0,17.8,0.239,0.105,4
+Team,Delta,146.8,197.0,50.3,0.342,0.299,1
+Team,Bravo,146.8,197.0,50.3,0.342,0.299,1
+Team,Charlie,156.5,201.0,44.5,0.284,0.264,3
+Team,Alpha,159.3,182.5,23.3,0.146,0.138,4
+Tenure band,2-5 yrs,218.0,289.0,71.0,0.326,0.422,1
+Tenure band,5-10 yrs,215.8,255.0,39.3,0.182,0.233,2
+Tenure band,10+ yrs,91.3,127.0,35.8,0.392,0.212,3
+Tenure band,0-2 yrs,84.3,106.5,22.3,0.264,0.132,4

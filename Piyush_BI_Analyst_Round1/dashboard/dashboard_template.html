@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Member Service Performance</title>
+<style>
+  :root{
+    --bg:#f4f3ef; --surface:#fcfcfb; --border:#e3e1da; --ink:#0b0b0b; --ink2:#52514e; --muted:#7c7a74;
+    --blue:#2a78d6; --blue-soft:#cde2fb; --orange:#eb6834; --orange-soft:#fbd9c9; --gray:#b9b7b0;
+    --good:#0ca30c; --good-ink:#076b07; --bad:#d03b3b; --bad-ink:#a42727; --warn:#fab219; --warn-ink:#8a5d00;
+    --shade:#efeee9; --focus:#1c5cab;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1440px;margin:0 auto;padding:20px 24px 40px}
+  header h1{font-size:22px;margin:0 0 4px}
+  header .sub{color:var(--ink2);font-size:13px}
+  .headline{margin:14px 0 0;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-left:5px solid var(--orange);border-radius:8px;font-size:15px}
+  .headline b{font-weight:650}
+  .bar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;margin:16px 0 10px;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+  .bar label{display:flex;flex-direction:column;font-size:11px;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em;gap:3px}
+  .bar select{font:inherit;font-size:13px;padding:5px 8px;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--ink);min-width:118px}
+  .bar .grp{display:flex;gap:6px;align-items:flex-end;padding-right:14px;border-right:1px solid var(--border)}
+  .bar .grp:last-of-type{border-right:none}
+  .bar .vs{font-size:12px;color:var(--muted);padding-bottom:7px}
+  button{font:inherit}
+  .btn{font-size:12px;padding:6px 10px;border:1px solid var(--border);background:#fff;border-radius:6px;cursor:pointer;color:var(--ink2)}
+  .btn:hover{border-color:var(--ink2)}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center;min-height:26px;margin:0 0 10px;font-size:12px;color:var(--ink2)}
+  .chip{background:var(--blue-soft);color:#104281;border-radius:14px;padding:3px 6px 3px 10px;display:inline-flex;gap:6px;align-items:center}
+  .chip button{border:none;background:transparent;cursor:pointer;color:#104281;font-size:13px;line-height:1;padding:0 2px}
+  .tiles{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px}
+  .tile{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px 8px;cursor:pointer;position:relative;transition:box-shadow .15s}
+  .tile:hover{box-shadow:0 1px 6px rgba(0,0,0,.08)}
+  .tile.sel{outline:2px solid var(--focus);outline-offset:-1px}
+  .tile .lab{font-size:12px;color:var(--ink2);display:flex;justify-content:space-between;gap:4px}
+  .tile .val{font-size:24px;font-weight:650;margin:4px 0 0;font-variant-numeric:tabular-nums}
+  .tile .cmp{font-size:11.5px;color:var(--ink2);font-variant-numeric:tabular-nums;min-height:16px}
+  .tile .st{font-size:11px;font-weight:600;margin-top:3px;display:flex;gap:4px;align-items:center}
+  .st.good{color:var(--good-ink)} .st.bad{color:var(--bad-ink)} .st.neutral{color:var(--muted)} .st.warn{color:var(--warn-ink)}
+  .tile svg{display:block;margin-top:4px}
+  .info{display:inline-block;width:15px;height:15px;border-radius:50%;border:1px solid var(--gray);color:var(--muted);font-size:10px;line-height:13px;text-align:center;cursor:help;flex:none}
+  .grid2{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-top:12px}
+  .grid2b{display:grid;grid-template-columns:3fr 2fr;gap:12px;margin-top:12px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+  .card h2{font-size:15px;margin:0 0 2px}
+  .card .note{font-size:12px;color:var(--ink2);margin:0 0 8px}
+  .attn{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .attn li{border:1px solid var(--border);border-radius:6px;padding:8px 10px;cursor:pointer;display:flex;gap:8px;font-size:13px;background:#fff}
+  .attn li:hover{border-color:var(--ink2)}
+  .attn .ic{flex:none;font-weight:700;width:18px;height:18px;border-radius:50%;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .attn .go{margin-left:auto;color:var(--blue);font-size:12px;white-space:nowrap;align-self:center}
+  .tabs{display:flex;gap:4px;flex-wrap:wrap;margin:6px 0 8px}
+  .tab{border:1px solid var(--border);background:#fff;border-radius:14px;padding:4px 11px;font-size:12px;cursor:pointer;color:var(--ink2)}
+  .tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .tab .pct{opacity:.7;margin-left:4px}
+  .suggest{font-size:12.5px;background:#fff7f2;border:1px solid var(--orange-soft);border-radius:6px;padding:7px 10px;margin-bottom:8px}
+  .suggest a{color:var(--blue);cursor:pointer;text-decoration:underline}
+  .legend{display:flex;gap:14px;font-size:11.5px;color:var(--ink2);margin-top:6px;flex-wrap:wrap}
+  .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+  table.def{border-collapse:collapse;width:100%;font-size:12px}
+  table.def td,table.def th{border-top:1px solid var(--border);padding:5px 6px;text-align:left;vertical-align:top}
+  table.def th{color:var(--ink2);font-weight:600}
+  .lim{font-size:12.5px;margin:0;padding-left:18px}
+  .lim li{margin-bottom:5px}
+  details summary{cursor:pointer;font-weight:600;font-size:13px;margin-top:10px}
+  #tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;font-size:12px;padding:7px 9px;border-radius:6px;max-width:300px;opacity:0;transition:opacity .08s;z-index:10;line-height:1.35}
+  #tip b{font-weight:650}
+  .heat td{padding:0;text-align:center;font-size:12px;font-variant-numeric:tabular-nums}
+  .heat .cell{margin:2px;border-radius:4px;padding:7px 4px;cursor:pointer;min-width:62px}
+  .heat th{font-size:11.5px;color:var(--ink2);font-weight:600;padding:4px;text-align:center}
+  .heat th.rowh{text-align:right;padding-right:8px}
+  .foot{font-size:11.5px;color:var(--muted);margin-top:16px}
+  .flag{color:var(--warn-ink);font-weight:600}
+  @media (max-width:1100px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}.grid2,.grid2b{grid-template-columns:1fr}}
+  @media (max-width:600px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding:12px 16px}}
+  @media print{body{background:#fff}.bar,.chips .btn{display:none}.card,.tile{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Member Service Performance · Jan–Jun 2026</h1>
+    <div class="sub">Executive view · synthetic assessment data · offline file (no data leaves this computer) · click any KPI to see its trend and drivers</div>
+    <div class="headline" id="headline"></div>
+  </header>
+
+  <div class="bar" id="filters">
+    <div class="grp">
+      <label>Baseline from<select id="b0"></select></label>
+      <label>to<select id="b1"></select></label>
+      <span class="vs">vs</span>
+      <label>Compare from<select id="c0"></select></label>
+      <label>to<select id="c1"></select></label>
+    </div>
+    <div class="grp" id="dimFilters"></div>
+    <button class="btn" id="reset" title="Clear all filters and restore default periods">Reset</button>
+  </div>
+  <div class="chips" id="chips"></div>
+
+  <section class="tiles" id="tiles" aria-label="KPI summary"></section>
+
+  <div class="grid2">
+    <div class="card">
+      <h2 id="trendTitle">Trend</h2>
+      <p class="note" id="trendNote"></p>
+      <div id="trend"></div>
+      <div class="legend" id="trendLegend"></div>
+    </div>
+    <div class="card">
+      <h2>What needs attention</h2>
+      <p class="note">Compare period vs baseline, within current filters. Click an item to investigate it.</p>
+      <ul class="attn" id="attn"></ul>
+    </div>
+  </div>
+
+  <div class="grid2b">
+    <div class="card">
+      <h2 id="drvTitle">What drove the change</h2>
+      <p class="note">Each bar is that group's contribution to the overall change (mix + rate; the bars sum to the total). Click a bar to drill into it.</p>
+      <div id="suggest"></div>
+      <div class="tabs" id="dimTabs"></div>
+      <div id="drivers"></div>
+      <div class="legend"><span><span class="sw" style="background:var(--orange)"></span>Made it worse</span><span><span class="sw" style="background:var(--blue)"></span>Made it better</span><span id="drvTotal"></span></div>
+    </div>
+    <div class="card">
+      <h2 id="heatTitle">Where is it concentrated?</h2>
+      <p class="note" id="heatNote"></p>
+      <div class="tabs" id="heatTabs"></div>
+      <div id="heat"></div>
+      <div class="legend"><span><span class="sw" style="background:var(--orange)"></span>Worse than baseline</span><span><span class="sw" style="background:var(--blue)"></span>Better</span><span><span class="sw" style="background:var(--shade)"></span>Fewer than 30 contacts (not shaded)</span></div>
+    </div>
+  </div>
+
+  <div class="grid2" style="grid-template-columns:1fr 1fr">
+    <div class="card">
+      <h2>Data limitations · read before acting</h2>
+      <ul class="lim" id="limits"></ul>
+    </div>
+    <div class="card">
+      <h2>KPI definitions</h2>
+      <table class="def" id="defs"></table>
+    </div>
+  </div>
+  <div class="foot" id="foot"></div>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script>
+const D = /*__DATA__*/null;
+// row layout: 0 month,1 ch,2 pr,3 rs,4 tm,5 seg,6 rg,7 wait,8 handle,9 outcome,10 sat,11 rep,12 srep,13 repeatWindowComplete,14 cost
+const DIM = [{k:'ch',i:1,name:'Channel'},{k:'pr',i:2,name:'Product'},{k:'rs',i:3,name:'Reason'},
+             {k:'tm',i:4,name:'Team'},{k:'seg',i:5,name:'Segment'},{k:'rg',i:6,name:'Region'}];
+const all = ()=>true;
+const M = {
+  vol:  {label:'Interactions / month', short:'Volume', fmt:'int', dir:0, kind:'count',
+         def:'Count of de-duplicated interactions, shown per month so periods of different length compare fairly.'},
+  wait: {label:'Avg wait', fmt:'sec', dir:-1, target:'Average_Wait_Seconds', elig:r=>r[7]!==null, val:r=>r[7],
+         def:'Average wait in seconds. Excludes 7 contacts with no wait recorded. Target 65s.'},
+  w120: {label:'Waits > 2 min', fmt:'pct', dir:-1, elig:r=>r[7]!==null, val:r=>r[7]>120?1:0,
+         def:'Share of contacts that waited more than 120 seconds. Shows the tail that an average hides. No formal target.'},
+  aband:{label:'Abandonment', fmt:'pct', dir:-1, elig:all, val:r=>r[9]===3?1:0,
+         def:'Abandoned / all contacts. No formal target.'},
+  res:  {label:'Resolution', fmt:'pct', dir:1, target:'Resolution_Rate', elig:all, val:r=>r[9]===0?1:0,
+         def:'Contacts coded Resolved / all contacts (abandoned count as not resolved). Target 82%.'},
+  trans:{label:'Transfer', fmt:'pct', dir:-1, target:'Transfer_Rate', elig:all, val:r=>r[9]===1?1:0,
+         def:'Transferred / all contacts. Target 8%.'},
+  srep: {label:'Same-reason repeat (7d)', fmt:'pct', dir:-1, elig:r=>r[13]===1, val:r=>r[12],
+         def:'Share of contacts followed by another contact from the same member about the SAME reason within 7 days. Recommended repeat metric. Excludes the last 7 days of data (follow-up not yet observable).'},
+  sat:  {label:'Satisfaction', fmt:'dec2', dir:1, target:'Satisfaction', elig:r=>r[10]!==null, val:r=>r[10],
+         def:'Average 1-5 survey score among responders only (~28% of contacts). Target 4.2. See data limitations.'},
+  rep:  {label:'Any-reason repeat (7d)', fmt:'pct', dir:-1, elig:r=>r[13]===1, val:r=>r[11],
+         def:'Share of contacts followed by ANY contact from the same member within 7 days. Mostly tracks contact frequency (see analysis), so the same-reason version is preferred.'},
+  esc:  {label:'Escalation', fmt:'pct', dir:-1, elig:all, val:r=>r[9]===2?1:0, def:'Escalated / all contacts.'},
+  aht:  {label:'Avg handle time', fmt:'sec', dir:0, elig:r=>r[9]!==3, val:r=>r[8],
+         def:'Average handle seconds, excluding abandoned contacts. Context only, not a goal.'},
+};
+const TILE_KEYS = ['vol','wait','w120','aband','res','trans','srep','sat'];
+const MORE_KEYS = ['rep','esc','aht'];
+
+const S = {b0:0,b1:3,c0:4,c1:5, f:{}, metric:'aband', dim:'ch', heat:'pr'};
+const $ = id=>document.getElementById(id);
+const tip = $('tip');
+function showTip(e,html){tip.innerHTML=html;tip.style.opacity=1;const x=Math.min(e.clientX+14,innerWidth-310);tip.style.left=x+'px';tip.style.top=(e.clientY+14)+'px'}
+function hideTip(){tip.style.opacity=0}
+document.addEventListener('mouseover',e=>{const t=e.target.closest('[data-tip]');if(t)showTip(e,t.dataset.tip)});
+document.addEventListener('mousemove',e=>{const t=e.target.closest('[data-tip]');if(t)showTip(e,t.dataset.tip);else hideTip()});
+
+const esc = s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+function fmt(v,f){ if(v===null||v===undefined||isNaN(v)) return '–';
+  if(f==='pct') return (v*100).toFixed(1)+'%'; if(f==='sec') return Math.round(v)+'s';
+  if(f==='dec2') return v.toFixed(2); return Math.round(v).toLocaleString(); }
+function fmtDelta(d,f){ if(d===null||isNaN(d)) return '';
+  const s=d>0?'+':d<0?'−':'±'; const a=Math.abs(d);
+  if(f==='pct') return s+(a*100).toFixed(1)+' pts'; if(f==='sec') return s+Math.round(a)+'s';
+  if(f==='dec2') return s+a.toFixed(2); return s+Math.round(a).toLocaleString(); }
+
+// ---------- data access
+function filtered(exclude){ return D.rows.filter(r=>DIM.every(d=>d.k===exclude||S.f[d.k]===undefined||r[d.i]===S.f[d.k])); }
+const inRange=(r,a,b)=>r[0]>=a&&r[0]<=b;
+function calc(rows,key,nMonths){
+  const m=M[key];
+  if(m.kind==='count') return {v:rows.length/(nMonths||1), n:rows.length};
+  let s=0,n=0; for(const r of rows){ if(m.elig(r)){ s+=m.val(r); n++; } }
+  return {v:n?s/n:null, n};
+}
+function periodRows(rows,which){ const a=which==='b'?S.b0:S.c0, b=which==='b'?S.b1:S.c1; return rows.filter(r=>inRange(r,a,b)); }
+const nMon=w=>w==='b'?S.b1-S.b0+1:S.c1-S.c0+1;
+function targetFor(key,a,b){ const t=M[key].target; if(!t) return null; const v=[];
+  for(let i=a;i<=b;i++){ const x=D.targets[t]&&D.targets[t][D.months[i]]; if(x!==undefined) v.push(x);} return v.length?v.reduce((p,c)=>p+c)/v.length:null; }
+function status(key,cur,base,tgt){
+  const m=M[key]; if(cur===null) return {cls:'neutral',txt:'No data',icon:'–'};
+  if(tgt!==null){ const ok=m.dir>0?cur>=tgt:cur<=tgt; return ok?{cls:'good',txt:'On target',icon:'✓'}:{cls:'bad',txt:'Missed target',icon:'✕'}; }
+  if(!m.dir||base===null) return {cls:'neutral',txt:'Context',icon:'•'};
+  const rel=Math.abs(cur-base)/Math.max(Math.abs(base),1e-9), worse=m.dir*(cur-base)<0;
+  if(rel<0.05) return {cls:'neutral',txt:'Stable vs baseline',icon:'='};
+  return worse?{cls:'bad',txt:'Worse vs baseline',icon:'▲'}:{cls:'good',txt:'Better vs baseline',icon:'▼'};
+}
+const mLabel=i=>new Date(D.months[i]+'-01T00:00:00').toLocaleString('en-US',{month:'short'});
+const periodLabel=w=>{const a=w==='b'?S.b0:S.c0,b=w==='b'?S.b1:S.c1; return a===b?mLabel(a):mLabel(a)+'–'+mLabel(b);};
+
+// ---------- controls
+function buildControls(){
+  for(const id of ['b0','b1','c0','c1']){ $(id).innerHTML=D.months.map((m,i)=>`<option value="${i}">${mLabel(i)} ${m.slice(0,4)}</option>`).join('');
+    $(id).value=S[id]; $(id).onchange=()=>{S[id]=+$(id).value; if(S.b1<S.b0)S.b1=S.b0; if(S.c1<S.c0)S.c1=S.c0; syncControls(); render();}; }
+  $('dimFilters').innerHTML=DIM.map(d=>`<label>${d.name}<select data-k="${d.k}"><option value="">All</option>${D.cats[d.k].map((v,i)=>`<option value="${i}">${esc(v)}</option>`).join('')}</select></label>`).join('');
+  $('dimFilters').querySelectorAll('select').forEach(s=>s.onchange=()=>{const k=s.dataset.k; if(s.value==='')delete S.f[k]; else S.f[k]=+s.value; render();});
+  $('reset').onclick=()=>{Object.assign(S,{b0:0,b1:3,c0:4,c1:5,f:{},metric:'aband',dim:'ch',heat:'pr'}); syncControls(); render();};
+}
+function syncControls(){ for(const id of ['b0','b1','c0','c1']) $(id).value=S[id];
+  $('dimFilters').querySelectorAll('select').forEach(s=>{const k=s.dataset.k; s.value=S.f[k]===undefined?'':S.f[k];}); }
+function setFilter(k,v){ S.f[k]=v; syncControls(); render(); }
+
+// ---------- tiles
+function spark(key,rows){
+  const pts=D.months.map((_,i)=>calc(rows.filter(r=>r[0]===i),key,1).v);
+  const vals=pts.filter(v=>v!==null); if(!vals.length) return '';
+  let lo=Math.min(...vals),hi=Math.max(...vals); const tg=targetFor(key,0,5); if(tg!==null){lo=Math.min(lo,tg);hi=Math.max(hi,tg);}
+  const W=150,H=30,pad=3, y=v=>H-pad-(hi===lo?0.5:(v-lo)/(hi-lo))*(H-2*pad), x=i=>pad+i*(W-2*pad)/(pts.length-1);
+  const path=pts.map((v,i)=>v===null?'':`${i?'L':'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join('');
+  const band=`<rect x="${x(S.c0)-4}" y="0" width="${x(S.c1)-x(S.c0)+8}" height="${H}" fill="#efeee9" rx="3"/>`;
+  const tl=tg!==null?`<line x1="${pad}" x2="${W-pad}" y1="${y(tg)}" y2="${y(tg)}" stroke="#7c7a74" stroke-dasharray="2 2" stroke-width="1"/>`:'';
+  return `<svg width="100%" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" height="30" aria-hidden="true">${band}${tl}<path d="${path}" fill="none" stroke="#2a78d6" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>`;
+}
+function renderTiles(rows){
+  const b=periodRows(rows,'b'), c=periodRows(rows,'c');
+  $('tiles').innerHTML=TILE_KEYS.map(k=>{
+    const m=M[k], cv=calc(c,k,nMon('c')), bv=calc(b,k,nMon('b')), tg=targetFor(k,S.c0,S.c1), st=status(k,cv.v,bv.v,tg);
+    let cmp=`${periodLabel('b')}: ${fmt(bv.v,m.fmt)}`+(tg!==null?` · target ${fmt(tg,m.fmt)}`:'');
+    let extra='';
+    if(k==='sat'){ const resp=c.length?cv.n/c.length:0; extra=`<div class="cmp">n=${cv.n} · ${(resp*100).toFixed(0)}% responded <span class="flag" data-tip="Only survey responders are scored. The score sits ~1.5 points below target in every month, which suggests a scale or method mismatch. Confirm the survey definition before using it for decisions.">⚠ caution</span></div>`; }
+    if(k==='srep' && S.c1===D.months.length-1) extra=`<div class="cmp"><span class="flag" data-tip="Contacts after ${D.meta.last_complete_repeat_date} have less than 7 days of follow-up and are excluded.">⚠ last 7 days excluded</span></div>`;
+    return `<div class="tile ${S.metric===k?'sel':''}" data-k="${k}" role="button" tabindex="0" aria-label="${esc(m.label)}">
+      <div class="lab"><span>${esc(m.label)}</span><span class="info" data-tip="${esc(m.def)}">i</span></div>
+      <div class="val">${fmt(cv.v,m.fmt)}</div>
+      <div class="cmp">${cmp}</div>${extra}
+      <div class="st ${st.cls}"><span>${st.icon}</span>${st.txt}</div>
+      ${spark(k,rows)}
+    </div>`; }).join('');
+  $('tiles').querySelectorAll('.tile').forEach(t=>{ t.onclick=()=>{S.metric=t.dataset.k; render();}; t.onkeydown=e=>{if(e.key==='Enter'){S.metric=t.dataset.k;render();}}; });
+}
+
+// ---------- trend
+function renderTrend(rows){
+  const k=S.metric, m=M[k];
+  const pts=D.months.map((_,i)=>{const x=calc(rows.filter(r=>r[0]===i),k,1); return {i,v:x.v,n:x.n,t:targetFor(k,i,i)};});
+  const opts=[...TILE_KEYS,...MORE_KEYS].map(key=>`<option value="${key}" ${key===k?'selected':''}>${esc(M[key].label)}</option>`).join('');
+  $('trendTitle').innerHTML=`Monthly trend: <select id="trendSel" style="font:inherit;font-weight:650;border:1px solid var(--border);border-radius:6px;padding:2px 4px">${opts}</select>`;
+  $('trendSel').onchange=e=>{S.metric=e.target.value; render();};
+  const tg=pts.find(p=>p.t!==null);
+  $('trendNote').textContent = tg ? `Dots are colored against target (${fmt(tg.t,m.fmt)}): green = met, red = missed. Shaded = compare period.`
+                                  : `No formal target for this KPI. Shaded = compare period.`;
+  const vals=pts.filter(p=>p.v!==null).map(p=>p.v).concat(pts.filter(p=>p.t!==null).map(p=>p.t));
+  if(!vals.length){$('trend').innerHTML='<p class="note">No data for this selection.</p>';return;}
+  let lo=Math.min(...vals),hi=Math.max(...vals); if(m.fmt==='pct'||m.kind==='count'||m.fmt==='sec') lo=Math.min(0,lo);
+  const span=hi-lo||1; hi+=span*0.12;
+  const step=niceStep((hi-lo)/4); lo=Math.floor(lo/step)*step; hi=Math.ceil(hi/step)*step;
+  const W=820,H=300,L=56,R=16,T=14,B=30, x=i=>L+i*(W-L-R)/(pts.length-1), y=v=>T+(1-(v-lo)/(hi-lo))*(H-T-B);
+  let g='';
+  for(let v=lo;v<=hi+step*1e-6;v+=step){ g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#ecebe7"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="#7c7a74">${fmt(v,m.fmt)}</text>`;}
+  g+=`<rect x="${x(S.c0)-22}" y="${T}" width="${x(S.c1)-x(S.c0)+44}" height="${H-T-B}" fill="#efeee9" rx="4"/>`;
+  pts.forEach(p=>g+=`<text x="${x(p.i)}" y="${H-10}" text-anchor="middle" font-size="12" fill="#52514e">${mLabel(p.i)}</text>`);
+  if(tg) { const tp=pts.filter(p=>p.t!==null); g+=`<path d="${tp.map((p,j)=>`${j?'L':'M'}${x(p.i)},${y(p.t)}`).join('')}" stroke="#52514e" stroke-dasharray="5 4" fill="none" stroke-width="1.5"/><text x="${W-R}" y="${y(tp[tp.length-1].t)-6}" text-anchor="end" font-size="11" fill="#52514e">target ${fmt(tp[tp.length-1].t,m.fmt)}</text>`; }
+  const line=pts.filter(p=>p.v!==null);
+  g+=`<path d="${line.map((p,j)=>`${j?'L':'M'}${x(p.i)},${y(p.v)}`).join('')}" stroke="#2a78d6" stroke-width="2.5" fill="none"/>`;
+  line.forEach(p=>{ let col='#2a78d6'; if(p.t!==null){const ok=m.dir>0?p.v>=p.t:p.v<=p.t; col=ok?'#0ca30c':'#d03b3b';}
+    const tipTxt=`<b>${mLabel(p.i)} ${D.months[p.i].slice(0,4)}</b><br>${esc(m.label)}: ${fmt(p.v,m.fmt)}`+(p.t!==null?`<br>Target: ${fmt(p.t,m.fmt)}`:'')+`<br>Based on n=${p.n.toLocaleString()} contacts`;
+    g+=`<circle cx="${x(p.i)}" cy="${y(p.v)}" r="5.5" fill="${col}" stroke="#fcfcfb" stroke-width="2"/>`+
+       `<circle cx="${x(p.i)}" cy="${y(p.v)}" r="16" fill="transparent" data-tip="${esc(tipTxt)}"/>`+
+       `<text x="${x(p.i)}" y="${y(p.v)-11}" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0b0b0b">${fmt(p.v,m.fmt)}</text>`;
+    if(k==='sat') g+=`<text x="${x(p.i)}" y="${y(p.v)+20}" text-anchor="middle" font-size="10" fill="#7c7a74">n=${p.n}</text>`; });
+  $('trend').innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(m.label)} by month">${g}</svg>`;
+  $('trendLegend').innerHTML = tg ? `<span><span class="sw" style="background:#0ca30c"></span>✓ met target</span><span><span class="sw" style="background:#d03b3b"></span>✕ missed target</span><span>- - target</span>` : '';
+}
+
+function niceStep(raw){const p=Math.pow(10,Math.floor(Math.log10(raw||1))); const f=raw/p; return (f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*p;}
+// ---------- drivers (contribution decomposition)
+function contributions(rows,key,dim){
+  const m=M[key], b=periodRows(rows,'b'), c=periodRows(rows,'c'), di=DIM.find(d=>d.k===dim).i, nb=nMon('b'), nc=nMon('c');
+  const cats=D.cats[dim].map((name,i)=>({i,name,n1:0,n2:0,s1:0,s2:0}));
+  if(m.kind==='count'){ b.forEach(r=>cats[r[di]].n1++); c.forEach(r=>cats[r[di]].n2++);
+    cats.forEach(x=>{x.x1=x.n1/nb;x.x2=x.n2/nc;x.contrib=x.x2-x.x1;}); }
+  else { b.forEach(r=>{if(m.elig(r)){cats[r[di]].n1++;cats[r[di]].s1+=m.val(r);}}); c.forEach(r=>{if(m.elig(r)){cats[r[di]].n2++;cats[r[di]].s2+=m.val(r);}});
+    const N1=cats.reduce((a,x)=>a+x.n1,0), N2=cats.reduce((a,x)=>a+x.n2,0);
+    cats.forEach(x=>{x.x1=x.n1?x.s1/x.n1:null; x.x2=x.n2?x.s2/x.n2:null; const w1=N1?x.n1/N1:0, w2=N2?x.n2/N2:0;
+      x.contrib=(w2*(x.x2||0))-(w1*(x.x1||0)); }); }
+  const total=cats.reduce((a,x)=>a+x.contrib,0);
+  const dir=m.dir||1;   // volume: growth shown as "worse" pressure
+  cats.forEach(x=>{x.share=total?x.contrib/total:0; x.bad=x.contrib*dir<0;});
+  return {cats:cats.filter(x=>x.n1+x.n2>0).sort((a,b)=>(b.contrib*-dir)-(a.contrib*-dir)), total, dir};
+}
+function renderDrivers(rows){
+  const k=S.metric, m=M[k];
+  $('drvTitle').textContent=`What drove the change in ${m.label.toLowerCase()}: ${periodLabel('b')} → ${periodLabel('c')}`;
+  // concentration per dimension, for tabs and suggestion
+  const avail=DIM.filter(d=>S.f[d.k]===undefined);
+  const conc=avail.map(d=>{const r=contributions(rows,k,d.k); const top=r.cats[0]; return {d, top, share:top?top.share:0, total:r.total};});
+  if(!avail.find(d=>d.k===S.dim)) S.dim=avail.length?avail[0].k:'ch';
+  $('dimTabs').innerHTML=avail.map(d=>{const c=conc.find(x=>x.d.k===d.k); return `<button class="tab ${S.dim===d.k?'on':''}" data-k="${d.k}">${d.name}<span class="pct">${c&&isFinite(c.share)?Math.round(c.share*100)+'%':''}</span></button>`;}).join('');
+  $('dimTabs').querySelectorAll('.tab').forEach(t=>t.onclick=()=>{S.dim=t.dataset.k; render();});
+  const best=conc.filter(c=>c.top&&c.total!==0&&isFinite(c.share)).sort((a,b)=>b.share-a.share)[0];
+  const tot=conc.length?conc[0].total:0;
+  const worsened = m.dir? (m.dir*tot<0) : tot>0;
+  $('suggest').innerHTML = best && Math.abs(tot)>1e-9 ? `<div class="suggest">${worsened?'Biggest driver':'Largest contributor'}: <b>${best.d.name} = ${esc(best.top.name)}</b> explains ${Math.round(best.share*100)}% of the ${fmtDelta(tot,m.fmt)} change. <a data-k="${best.d.k}" data-v="${best.top.i}" id="drillBest">Drill into ${esc(best.top.name)} →</a></div>` : (avail.length? '' : '<div class="suggest">All dimensions are filtered. Remove a filter chip to keep investigating.</div>');
+  const db=$('drillBest'); if(db) db.onclick=()=>setFilter(db.dataset.k,+db.dataset.v);
+  if(!avail.length){$('drivers').innerHTML='';$('drvTotal').textContent='';return;}
+  const r=contributions(rows,k,S.dim);
+  const maxAbs=Math.max(...r.cats.map(x=>Math.abs(x.contrib)),1e-9);
+  const W=760,rowH=30,L=150,R=230,mid=L+(W-L-R)/2,half=(W-L-R)/2-4;
+  let g='';
+  r.cats.forEach((x,j)=>{const yy=j*rowH, w=Math.abs(x.contrib)/maxAbs*half, left=x.contrib>=0?mid:mid-w;
+    const col=x.bad?'#eb6834':'#2a78d6';
+    const ch = m.kind==='count'? `${x.x1.toFixed(0)} → ${x.x2.toFixed(0)} / mo` : `${fmt(x.x1,m.fmt)} → ${fmt(x.x2,m.fmt)}`;
+    const small = m.kind!=='count' && Math.min(x.n1,x.n2)<30;
+    const t=`<b>${esc(x.name)}</b><br>${esc(m.label)}: ${ch}<br>Contribution: ${fmtDelta(x.contrib,m.fmt)} (${Math.round(x.share*100)}% of total change)<br>Contacts: ${x.n1} → ${x.n2}${small?'<br>⚠ fewer than 30 contacts in a period: noisy':''}<br><i>Click to drill in</i>`;
+    g+=`<g class="drv" data-v="${x.i}" style="cursor:pointer" data-tip="${esc(t)}">
+      <rect x="0" y="${yy}" width="${W}" height="${rowH}" fill="transparent"/>
+      <text x="${L-10}" y="${yy+19}" text-anchor="end" font-size="12.5" fill="#0b0b0b">${esc(x.name)}${small?' ⚠':''}</text>
+      <rect x="${left}" y="${yy+6}" width="${Math.max(w,1.5)}" height="${rowH-12}" rx="3" fill="${col}"/>
+      <text x="${W-R+12}" y="${yy+19}" font-size="12" fill="#52514e">${ch}</text>
+      <text x="${W-6}" y="${yy+19}" text-anchor="end" font-size="12" font-weight="600" fill="#0b0b0b">${Math.round(x.share*100)}%</text></g>`;});
+  g+=`<line x1="${mid}" x2="${mid}" y1="0" y2="${r.cats.length*rowH}" stroke="#7c7a74"/>`;
+  $('drivers').innerHTML=`<svg viewBox="0 0 ${W} ${r.cats.length*rowH+4}" width="100%">${g}</svg>`;
+  $('drivers').querySelectorAll('.drv').forEach(el=>el.onclick=()=>setFilter(S.dim,+el.dataset.v));
+  $('drvTotal').textContent=`Total change: ${fmtDelta(r.total,m.fmt)}`+(m.kind==='count'?' contacts / month':'');
+}
+
+// ---------- heatmap
+function renderHeat(rows){
+  const k=S.metric, m=M[k]; const colDim=S.heat;
+  $('heatTabs').innerHTML=[['pr','Channel × Product'],['rs','Channel × Reason']].map(([d,l])=>`<button class="tab ${S.heat===d?'on':''}" data-k="${d}">${l}</button>`).join('');
+  $('heatTabs').querySelectorAll('.tab').forEach(t=>t.onclick=()=>{S.heat=t.dataset.k; render();});
+  $('heatTitle').textContent=`Where is ${m.label.toLowerCase()} worst? (${periodLabel('c')})`;
+  $('heatNote').textContent=`Cell value = ${periodLabel('c')}; color = change vs ${periodLabel('b')}. Click a cell to filter to it.`;
+  const ci=DIM.find(d=>d.k===colDim).i;
+  const chs=D.cats.ch.map((_,i)=>i).filter(i=>S.f.ch===undefined||S.f.ch===i);
+  const cols=D.cats[colDim].map((_,i)=>i).filter(i=>S.f[colDim]===undefined||S.f[colDim]===i);
+  const cells=[]; let maxRel=0;
+  for(const a of chs) for(const b of cols){ const sub=rows.filter(r=>r[1]===a&&r[ci]===b);
+    const v1=calc(periodRows(sub,'b'),k,nMon('b')), v2=calc(periodRows(sub,'c'),k,nMon('c'));
+    const rel=(v1.v&&v2.v!==null)? (v2.v-v1.v)/Math.abs(v1.v) : 0; const signed=(m.dir||1)*rel*-1; // + = worse
+    if(v2.n>=30&&isFinite(signed)) maxRel=Math.max(maxRel,Math.abs(signed)); cells.push({a,b,v1,v2,signed}); }
+  const color=c=>{ if(c.v2.n<30||c.v2.v===null) return '#efeee9'; const t=Math.min(Math.abs(c.signed)/Math.max(maxRel,0.25),1);
+    if(Math.abs(c.signed)<0.05) return '#f4f3ef'; const base=c.signed>0?[235,104,52]:[42,120,214];
+    const mix=v=>Math.round(255+(v-255)*(0.15+0.85*t)); return `rgb(${mix(base[0])},${mix(base[1])},${mix(base[2])})`; };
+  let h=`<table class="heat"><tr><th></th>${cols.map(b=>`<th>${esc(D.cats[colDim][b])}</th>`).join('')}</tr>`;
+  for(const a of chs){ h+=`<tr><th class="rowh">${esc(D.cats.ch[a])}</th>`;
+    for(const b of cols){ const c=cells.find(x=>x.a===a&&x.b===b); const bg=color(c); const dark=c.v2.n>=30&&Math.abs(c.signed)/Math.max(maxRel,0.25)>0.6;
+      const t=`<b>${esc(D.cats.ch[a])} · ${esc(D.cats[colDim][b])}</b><br>${esc(m.label)}: ${fmt(c.v1.v,m.fmt)} → ${fmt(c.v2.v,m.fmt)}<br>Contacts: ${c.v1.n} → ${c.v2.n}${c.v2.n<30?'<br>⚠ fewer than 30 contacts: not shaded':''}<br><i>Click to filter</i>`;
+      h+=`<td><div class="cell" style="background:${bg};color:${dark?'#fff':'#0b0b0b'}" data-a="${a}" data-b="${b}" data-tip="${esc(t)}">${c.v2.v===null?'–':fmt(c.v2.v,m.fmt)}${c.v2.n<30?'<span style="color:#7c7a74;font-size:10px"> ·n'+c.v2.n+'</span>':''}</div></td>`; }
+    h+='</tr>'; }
+  $('heat').innerHTML=h+'</table>';
+  $('heat').querySelectorAll('.cell').forEach(el=>el.onclick=()=>{S.f.ch=+el.dataset.a; S.f[colDim]=+el.dataset.b; syncControls(); render();});
+}
+
+// ---------- attention list
+function renderAttention(rows){
+  const items=[]; const b=periodRows(rows,'b'), c=periodRows(rows,'c');
+  // hot spots: channel x product / reason cells with a wait jump
+  if(S.f.ch===undefined){
+    for(const [dk,di] of [['pr',2],['rs',3]]) for(let a=0;a<D.cats.ch.length;a++) for(let x=0;x<D.cats[dk].length;x++){
+      if(S.f[dk]!==undefined) continue;
+      const s1=b.filter(r=>r[1]===a&&r[di]===x), s2=c.filter(r=>r[1]===a&&r[di]===x);
+      const w1=calc(s1,'wait').v, w2=calc(s2,'wait'), ab1=calc(s1,'aband').v, ab2=calc(s2,'aband').v;
+      if(w2.n>=30&&w1&&w2.v>=1.5*w1) items.push({sev:3, score:w2.v-w1, kind:'hot',
+        html:`<b>${esc(D.cats.ch[a])} · ${esc(D.cats[dk][x])}</b>: wait ${fmt(w1,'sec')} → ${fmt(w2.v,'sec')}, abandonment ${fmt(ab1,'pct')} → ${fmt(ab2,'pct')}`,
+        act:()=>{S.f.ch=a; S.f[dk]=x; S.metric='aband'; syncControls(); render();}});
+    }
+    // keep the two biggest hot spots per drill type
+    items.sort((p,q)=>q.score-p.score); items.splice(3);
+  }
+  for(const k of ['res','trans','wait','sat']){ const cv=calc(c,k,nMon('c')).v, tg=targetFor(k,S.c0,S.c1); if(cv===null||tg===null) continue;
+    const m=M[k], ok=m.dir>0?cv>=tg:cv<=tg;
+    if(!ok) items.push({sev:2, kind:'miss', html:`<b>${m.label}</b> missed target: ${fmt(cv,m.fmt)} vs ${fmt(tg,m.fmt)}`+(k==='sat'?' <span class="flag">(low coverage, see limits)</span>':''), act:()=>{S.metric=k; render();}}); }
+  for(const k of ['w120','aband','srep']){ const m=M[k], v1=calc(b,k).v, v2=calc(c,k).v; if(v1===null||v2===null) continue;
+    if(m.dir*(v2-v1)<0 && Math.abs(v2-v1)/Math.max(v1,0.005)>0.25) items.push({sev:2, kind:'worse', html:`<b>${m.label}</b> worsened: ${fmt(v1,m.fmt)} → ${fmt(v2,m.fmt)} (no formal target)`, act:()=>{S.metric=k; render();}}); }
+  const avgOk = (()=>{const cv=calc(c,'wait').v,tg=targetFor('wait',S.c0,S.c1); return cv!==null&&tg!==null&&cv<=tg;})();
+  items.splice(7);
+  if(!items.length) items.push({sev:1, html:'Nothing flagged for this selection.', act:()=>{}});
+  $('attn').innerHTML=items.map((it,j)=>`<li data-j="${j}"><span class="ic" style="background:${it.kind==='hot'?'#eb6834':it.sev>=2?'#d03b3b':'#7c7a74'}">${it.kind==='hot'?'!':it.sev>=2?'✕':'•'}</span><span>${it.html}</span>${it.kind?'<span class="go">Investigate →</span>':''}</li>`).join('');
+  $('attn').querySelectorAll('li').forEach(li=>li.onclick=()=>items[+li.dataset.j].act());
+  // headline
+  const w1=calc(b,'w120').v, w2=calc(c,'w120').v, wa=calc(c,'wait').v, ab1=calc(b,'aband').v, ab2=calc(c,'aband').v, hot=items.find(i=>i.kind==='hot');
+  let hl;
+  if(avgOk && w2!==null && w1!==null && w2>w1*1.5 && w2>0.02)
+    hl=`Average wait is <b>on target (${fmt(wa,'sec')} vs 65s)</b>, yet the share of contacts waiting over 2 minutes rose from <b>${fmt(w1,'pct')} to ${fmt(w2,'pct')}</b> and abandonment from <b>${fmt(ab1,'pct')} to ${fmt(ab2,'pct')}</b>.` + (hot? ` The problem is concentrated in ${hot.html.split(':')[0]}.`:'');
+  else hl=`Selection: ${periodLabel('c')} vs ${periodLabel('b')}. Average wait ${fmt(wa,'sec')}; abandonment ${fmt(ab1,'pct')} → ${fmt(ab2,'pct')}; resolution ${fmt(calc(b,'res').v,'pct')} → ${fmt(calc(c,'res').v,'pct')}.`;
+  $('headline').innerHTML=hl;
+}
+
+// ---------- chips, limits, defs
+function renderChips(){
+  const act=DIM.filter(d=>S.f[d.k]!==undefined);
+  $('chips').innerHTML = act.length ? 'Drill path: '+act.map(d=>`<span class="chip">${d.name}: ${esc(D.cats[d.k][S.f[d.k]])}<button aria-label="Remove ${d.name} filter" data-k="${d.k}">✕</button></span>`).join('')+` <button class="btn" id="clearF">Clear filters</button>` : '<span>All contacts · use the filters, click a driver bar or a heat-map cell to drill in</span>';
+  $('chips').querySelectorAll('.chip button').forEach(bn=>bn.onclick=()=>{delete S.f[bn.dataset.k]; syncControls(); render();});
+  const cf=$('clearF'); if(cf) cf.onclick=()=>{S.f={}; syncControls(); render();};
+}
+function renderLimits(rows){
+  const c=periodRows(rows,'c'), sat=c.filter(r=>r[10]!==null), resp=c.length?sat.length/c.length:0;
+  const mean=sat.length?sat.reduce((a,r)=>a+r[10],0)/sat.length:0;
+  const sd=sat.length>1?Math.sqrt(sat.reduce((a,r)=>a+(r[10]-mean)**2,0)/(sat.length-1)):0;
+  const moe=sat.length?1.96*sd/Math.sqrt(sat.length):0;
+  $('limits').innerHTML=[
+    `<b>Satisfaction covers responders only:</b> ${sat.length.toLocaleString()} of ${c.length.toLocaleString()} contacts in this selection (${(resp*100).toFixed(0)}%), margin of error ±${moe.toFixed(2)}. The score is ~1.5 below the 4.2 target in every month, so confirm the survey scale and method before treating it as a target miss.`,
+    `<b>Repeat contacts:</b> the last 7 days (after ${D.meta.last_complete_repeat_date}) are excluded because follow-up is not yet observable. "Any-reason" repeat mostly tracks how often members contact us; "same-reason" is the better signal of unresolved issues.`,
+    `<b>Cleaning applied:</b> ${D.meta.dup_removed} exact duplicate records removed, ${D.meta.channel_recoded} channel values recoded ("phone" → "Phone"), ${D.meta.wait_missing} contacts with no wait excluded from wait KPIs only.`,
+    `<b>Handle time on abandoned contacts</b> is populated (avg ~440s), so AHT excludes them. For abandoned contacts, wait may be time-to-hang-up.`,
+    `<b>Estimated cost</b> is a formula (handle seconds × $0.012, +$3 if transferred), not an observed cost.`,
+    `<b>Small groups:</b> bars marked ⚠ and heat-map cells left unshaded (under 30 contacts) have too few contacts to read reliably.`,
+    `<b>Association, not causation:</b> the data shows where and when performance changed, not why. The May step change needs staffing, routing and incident data to explain.`,
+  ].map(x=>`<li>${x}</li>`).join('');
+}
+function renderDefs(){
+  $('defs').innerHTML='<tr><th>KPI</th><th>Definition</th></tr>'+[...TILE_KEYS,...MORE_KEYS].map(k=>`<tr><td>${esc(M[k].label)}</td><td>${esc(M[k].def)}</td></tr>`).join('');
+  $('foot').textContent=`Built ${D.meta.built} from ${D.meta.analysis_rows.toLocaleString()} cleaned interactions (${D.meta.raw_rows.toLocaleString()} raw). All data synthetic. Comparison periods and filters are user-selectable; definitions match the SQL and Python deliverables.`;
+}
+
+function render(){
+  hideTip();
+  const rows=filtered();
+  renderChips(); renderTiles(rows); renderTrend(rows); renderAttention(rows); renderDrivers(rows); renderHeat(rows); renderLimits(rows);
+}
+buildControls(); renderDefs(); render();
+</script>
+</body>
+</html>

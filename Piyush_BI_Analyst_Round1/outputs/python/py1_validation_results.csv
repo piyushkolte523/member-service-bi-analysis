@@ -1,0 +1,15 @@
+check,sql,python,abs_diff,status
+V1 duplicates removed,12.0,12.0,0.0,MATCH
+V1 channel values recoded,8.0,8.0,0.0,MATCH
+V1 missing wait,7.0,7.0,0.0,MATCH
+V1 missing satisfaction,2890.0,2890.0,0.0,MATCH
+V1 censored repeat-window rows,184.0,184.0,0.0,MATCH
+V2 monthly KPI cells outside rounding tolerance (120 cells),0.0,0.0,0.0,MATCH
+V3 7-day repeat rate 1) Jan-Apr,0.326,0.3258,0.0002,MATCH
+V3 7-day repeat rate 2) May-Jun,0.394,0.3939,0.0001,MATCH
+V4 hot-spot avg wait 1) Jan-Apr,51.4,51.4218,0.0218,MATCH
+V4 hot-spot abandonment 1) Jan-Apr,0.029,0.0294,0.0004,MATCH
+V4 hot-spot avg wait 2) May-Jun,136.8,136.8076,0.0076,MATCH
+V4 hot-spot abandonment 2) May-Jun,0.212,0.2123,0.0003,MATCH
+V5 Phone contribution to wait change (s),15.8163,15.8163,0.0,MATCH
+V5 decomposition sums to total change (s),16.4797,16.4797,0.0,MATCH

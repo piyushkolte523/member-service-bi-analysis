@@ -1,0 +1,3 @@
+model,expected abandoned / month now,with all hot-spot waits <= 90s,avoided / month,hot-spot abandonment now,hot-spot abandonment at 90s
+Model B (wait only) - central estimate,28.108981057780007,7.8567369334410255,20.25224412433898,0.19318887324934714,0.05399819198241255
+Model C (controls for hot-spot x period) - conservative,31.000000000000007,15.654502215386739,15.345497784613269,0.2130584192439863,0.10759108051812191

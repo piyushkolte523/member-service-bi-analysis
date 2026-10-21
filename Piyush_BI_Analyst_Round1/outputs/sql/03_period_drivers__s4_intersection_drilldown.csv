@@ -1,0 +1,21 @@
+drill,cell,n_jan_apr,n_may_jun,avg_wait_jan_apr,avg_wait_may_jun,abandon_jan_apr,abandon_may_jun,resolution_jan_apr,resolution_may_jun,wait_contribution_s,share_of_wait_change,rank_in_drill
+Channel x Product,Phone | Credit Card,290,182,51.4,137.3,0.034,0.203,0.81,0.67,9.92,0.602,1
+Channel x Product,Phone | Digital Banking,249,158,50.8,73.0,0.016,0.038,0.847,0.829,2.24,0.136,2
+Channel x Product,Phone | Auto Loan,190,139,49.5,59.5,0.011,0.065,0.821,0.777,1.47,0.089,3
+Channel x Product,Phone | Personal Loan,145,97,48.1,66.4,0.055,0.093,0.8,0.691,1.29,0.078,4
+Channel x Product,Phone | Checking,340,193,52.5,66.0,0.041,0.067,0.791,0.788,0.89,0.054,5
+Channel x Product,Chat | Digital Banking,63,52,49.2,49.1,0.063,0.019,0.778,0.827,0.37,0.023,6
+Channel x Product,Chat | Personal Loan,41,35,51.1,52.4,0.024,0.114,0.878,0.714,0.32,0.02,7
+Channel x Product,Chat | Auto Loan,54,38,47.1,50.9,0.037,0.0,0.704,0.895,0.2,0.012,8
+Channel x Product,Digital | Digital Banking,116,83,14.3,16.3,0.0,0.036,0.845,0.831,0.19,0.012,9
+Channel x Product,Chat | Credit Card,73,49,45.2,49.0,0.041,0.041,0.877,0.653,0.19,0.012,10
+Channel x Reason,Phone | Payment,215,145,51.6,136.4,0.028,0.221,0.786,0.676,8.14,0.494,1
+Channel x Reason,Phone | Card Issue,198,145,50.8,76.1,0.035,0.069,0.778,0.807,2.95,0.179,2
+Channel x Reason,Phone | Access/Login,210,129,48.3,74.6,0.024,0.07,0.848,0.76,2.05,0.124,3
+Channel x Reason,Phone | Transfer,203,149,52.7,66.6,0.049,0.047,0.818,0.745,2.01,0.122,4
+Channel x Reason,Phone | Loan Servicing,195,110,50.7,68.8,0.031,0.118,0.805,0.745,0.82,0.05,5
+Channel x Reason,Chat | Payment,49,48,49.0,45.7,0.041,0.042,0.816,0.917,0.43,0.026,6
+Channel x Reason,Chat | Loan Servicing,52,40,48.3,52.3,0.019,0.025,0.846,0.85,0.32,0.019,7
+Channel x Reason,Chat | Account Inquiry,54,39,45.7,47.4,0.056,0.051,0.815,0.692,0.18,0.011,8
+Channel x Reason,Branch | Transfer,43,36,12.2,15.4,0.023,0.0,0.884,0.889,0.14,0.009,9
+Channel x Reason,Chat | Access/Login,43,27,45.9,50.0,0.0,0.0,0.86,0.741,0.06,0.004,10

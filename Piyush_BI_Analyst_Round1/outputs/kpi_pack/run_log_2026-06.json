@@ -1,0 +1,76 @@
+{
+  "run_started": "2026-10-20T21:23:46",
+  "source": "BI_Analyst_Round_1_Technical_Assessment.xlsx",
+  "report_month": "2026-06",
+  "rows_raw": 4004,
+  "rows_analysis": 3992,
+  "controls": [
+    {
+      "control": "Schema: required columns present",
+      "status": "PASS",
+      "detail": "all present"
+    },
+    {
+      "control": "Duplicates: no conflicting records per Interaction_ID",
+      "status": "PASS",
+      "detail": "0 conflicting IDs"
+    },
+    {
+      "control": "Duplicates: exact copies removed",
+      "status": "WARN",
+      "detail": "12 exact duplicate rows removed"
+    },
+    {
+      "control": "Reconciliation: analysis rows = raw rows - duplicates",
+      "status": "PASS",
+      "detail": "4004 - 12 = 3992"
+    },
+    {
+      "control": "Categories: all channels mapped",
+      "status": "PASS",
+      "detail": "0 unmapped; 8 recoded for casing"
+    },
+    {
+      "control": "Referential integrity: every interaction has a member",
+      "status": "PASS",
+      "detail": "0 unmatched"
+    },
+    {
+      "control": "Completeness: wait recorded",
+      "status": "PASS",
+      "detail": "0.3% missing in 2026-06"
+    },
+    {
+      "control": "Coverage: survey response rate",
+      "status": "PASS",
+      "detail": "29.3% responded in 2026-06 (satisfaction shown with n)"
+    },
+    {
+      "control": "Completeness: every calendar day present",
+      "status": "PASS",
+      "detail": "30 of 30 days"
+    },
+    {
+      "control": "Volume vs trailing 3-month average",
+      "status": "PASS",
+      "detail": "765 vs 677 (+13%)"
+    },
+    {
+      "control": "Targets available for report month",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "control": "Repeat-contact window complete",
+      "status": "WARN",
+      "detail": "24% of 2026-06 contacts lack 7 days of follow-up; repeat rate uses complete-window contacts only (provisional)"
+    }
+  ],
+  "result": "PUBLISHED",
+  "alerts": 8,
+  "outputs": [
+    "KPI_Pack_2026-06.xlsx",
+    "kpi_trend_2026-06.png"
+  ],
+  "run_seconds": 1.39
+}

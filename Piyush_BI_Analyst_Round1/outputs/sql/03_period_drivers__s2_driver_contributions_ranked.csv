@@ -1,0 +1,166 @@
+metric,dimension,dim_value,n_jan_apr,n_may_jun,value_jan_apr,value_may_jun,change_in_value,contribution_to_total_change,rate_effect,mix_effect,total_change,share_of_total_change,unfavorable_rank,low_volume_flag
+7-day repeat rate,Channel,Phone,1214,680,0.331,0.399,0.067,0.0327,0.0335,-0.0008,0.0681,0.481,1,False
+7-day repeat rate,Channel,Branch,309,173,0.324,0.428,0.104,0.0129,0.0132,-0.0002,0.0681,0.19,2,False
+7-day repeat rate,Channel,Digital,592,325,0.318,0.375,0.058,0.0118,0.0139,-0.002,0.0681,0.174,3,False
+7-day repeat rate,Channel,Chat,322,193,0.323,0.378,0.055,0.0106,0.0075,0.003,0.0681,0.155,4,False
+7-day repeat rate,Digital adoption,Medium (0.40-0.69),1036,633,0.316,0.403,0.087,0.0518,0.0387,0.0131,0.0681,0.761,1,False
+7-day repeat rate,Digital adoption,High (0.70+),719,408,0.341,0.395,0.054,0.0169,0.016,0.0009,0.0681,0.248,2,False
+7-day repeat rate,Digital adoption,Low (<0.40),682,330,0.326,0.376,0.05,-0.0007,0.0131,-0.0137,0.0681,-0.01,3,False
+7-day repeat rate,Product,Credit Card,576,332,0.304,0.398,0.094,0.0245,0.0224,0.002,0.0681,0.36,1,False
+7-day repeat rate,Product,Digital Banking,498,305,0.321,0.384,0.062,0.0197,0.0133,0.0064,0.0681,0.289,2,False
+7-day repeat rate,Product,Auto Loan,413,225,0.288,0.373,0.085,0.0124,0.0142,-0.0018,0.0681,0.183,3,False
+7-day repeat rate,Product,Checking,645,336,0.346,0.408,0.062,0.0084,0.0158,-0.0074,0.0681,0.124,4,False
+7-day repeat rate,Product,Personal Loan,305,173,0.384,0.405,0.021,0.003,0.0026,0.0004,0.0681,0.045,5,False
+7-day repeat rate,Reason,Payment,423,274,0.319,0.394,0.075,0.0234,0.014,0.0094,0.0681,0.343,1,False
+7-day repeat rate,Reason,Transfer,405,255,0.338,0.408,0.07,0.0196,0.0123,0.0074,0.0681,0.289,2,False
+7-day repeat rate,Reason,Access/Login,397,211,0.338,0.445,0.108,0.0136,0.0171,-0.0035,0.0681,0.199,3,False
+7-day repeat rate,Reason,Card Issue,414,227,0.309,0.379,0.07,0.0102,0.0117,-0.0015,0.0681,0.15,4,False
+7-day repeat rate,Reason,Account Inquiry,379,191,0.317,0.393,0.076,0.0055,0.0112,-0.0057,0.0681,0.08,5,False
+7-day repeat rate,Reason,Loan Servicing,419,213,0.334,0.343,0.009,-0.0042,0.0014,-0.0056,0.0681,-0.062,6,False
+7-day repeat rate,Region,South,762,448,0.303,0.386,0.083,0.0314,0.0265,0.0049,0.0681,0.461,1,False
+7-day repeat rate,Region,Central,784,460,0.335,0.404,0.069,0.0277,0.0226,0.0051,0.0681,0.408,2,False
+7-day repeat rate,Region,North,891,463,0.337,0.391,0.054,0.0089,0.0191,-0.0102,0.0681,0.131,3,False
+7-day repeat rate,Segment,Emerging,696,405,0.32,0.425,0.104,0.0339,0.0303,0.0037,0.0681,0.499,1,False
+7-day repeat rate,Segment,Mass,902,517,0.319,0.385,0.066,0.027,0.0245,0.0025,0.0681,0.396,2,False
+7-day repeat rate,Segment,Established,542,284,0.338,0.38,0.043,0.0037,0.0092,-0.0055,0.0681,0.054,3,False
+7-day repeat rate,Segment,Affluent,297,165,0.337,0.37,0.033,0.0035,0.004,-0.0005,0.0681,0.051,4,False
+7-day repeat rate,Team,Bravo,587,347,0.286,0.418,0.132,0.0368,0.0325,0.0043,0.0681,0.541,1,False
+7-day repeat rate,Team,Delta,587,355,0.305,0.358,0.053,0.0192,0.0132,0.006,0.0681,0.282,2,False
+7-day repeat rate,Team,Charlie,626,355,0.361,0.42,0.059,0.0159,0.0151,0.0008,0.0681,0.234,3,False
+7-day repeat rate,Team,Alpha,637,314,0.347,0.379,0.032,-0.0039,0.0079,-0.0117,0.0681,-0.057,4,False
+7-day repeat rate,Tenure band,2-5 yrs,872,510,0.315,0.424,0.108,0.0447,0.0395,0.0052,0.0681,0.657,1,False
+7-day repeat rate,Tenure band,0-2 yrs,337,193,0.297,0.409,0.113,0.0166,0.0157,0.0009,0.0681,0.244,2,False
+7-day repeat rate,Tenure band,10+ yrs,365,221,0.356,0.398,0.042,0.0108,0.0065,0.0043,0.0681,0.159,3,False
+7-day repeat rate,Tenure band,5-10 yrs,863,447,0.335,0.351,0.016,-0.0041,0.0056,-0.0096,0.0681,-0.06,4,False
+Abandonment rate,Channel,Phone,1214,769,0.031,0.096,0.065,0.032,0.0322,-0.0002,0.0331,0.966,1,False
+Abandonment rate,Channel,Digital,592,367,0.039,0.046,0.007,0.0015,0.0018,-0.0003,0.0331,0.045,2,False
+Abandonment rate,Channel,Branch,309,195,0.045,0.046,0.001,0.0,0.0001,-0.0001,0.0331,0.001,3,False
+Abandonment rate,Channel,Chat,322,224,0.037,0.031,-0.006,-0.0004,-0.0008,0.0004,0.0331,-0.013,4,False
+Abandonment rate,Digital adoption,Medium (0.40-0.69),1036,714,0.035,0.071,0.037,0.018,0.0162,0.0018,0.0331,0.544,1,False
+Abandonment rate,Digital adoption,High (0.70+),719,464,0.035,0.065,0.03,0.009,0.0089,0.0002,0.0331,0.273,2,False
+Abandonment rate,Digital adoption,Low (<0.40),682,377,0.038,0.069,0.031,0.0061,0.0081,-0.002,0.0331,0.183,3,False
+Abandonment rate,Product,Credit Card,576,367,0.035,0.117,0.082,0.0194,0.0195,-0.0,0.0331,0.587,1,False
+Abandonment rate,Product,Auto Loan,413,253,0.027,0.067,0.041,0.0064,0.0067,-0.0003,0.0331,0.194,2,False
+Abandonment rate,Product,Personal Loan,305,204,0.052,0.078,0.026,0.0037,0.0033,0.0004,0.0331,0.112,3,False
+Abandonment rate,Product,Digital Banking,498,339,0.024,0.032,0.008,0.0021,0.0018,0.0004,0.0331,0.065,4,False
+Abandonment rate,Product,Checking,645,392,0.043,0.051,0.008,0.0014,0.002,-0.0006,0.0331,0.041,5,False
+Abandonment rate,Reason,Payment,423,310,0.04,0.139,0.099,0.0207,0.0184,0.0023,0.0331,0.624,1,False
+Abandonment rate,Reason,Access/Login,397,246,0.025,0.061,0.036,0.0055,0.0057,-0.0002,0.0331,0.167,2,False
+Abandonment rate,Reason,Loan Servicing,419,239,0.029,0.063,0.034,0.0047,0.0056,-0.0008,0.0331,0.143,3,False
+Abandonment rate,Reason,Account Inquiry,379,217,0.029,0.055,0.026,0.0032,0.0039,-0.0007,0.0331,0.097,4,False
+Abandonment rate,Reason,Card Issue,414,256,0.051,0.055,0.004,0.0004,0.0007,-0.0003,0.0331,0.012,5,False
+Abandonment rate,Reason,Transfer,405,287,0.04,0.028,-0.012,-0.0014,-0.002,0.0006,0.0331,-0.043,6,False
+Abandonment rate,Region,South,762,504,0.035,0.077,0.042,0.014,0.0134,0.0006,0.0331,0.423,1,False
+Abandonment rate,Region,Central,784,520,0.037,0.065,0.028,0.01,0.0093,0.0006,0.0331,0.301,2,False
+Abandonment rate,Region,North,891,531,0.035,0.064,0.029,0.0091,0.0103,-0.0012,0.0331,0.276,3,False
+Abandonment rate,Segment,Mass,902,577,0.024,0.073,0.048,0.018,0.0179,0.0,0.0331,0.543,1,False
+Abandonment rate,Segment,Emerging,696,468,0.037,0.071,0.033,0.0106,0.0097,0.0008,0.0331,0.319,2,False
+Abandonment rate,Segment,Established,542,326,0.042,0.061,0.019,0.0034,0.0041,-0.0007,0.0331,0.103,3,False
+Abandonment rate,Segment,Affluent,297,184,0.054,0.065,0.011,0.0012,0.0014,-0.0002,0.0331,0.035,4,False
+Abandonment rate,Team,Charlie,626,402,0.029,0.087,0.058,0.0151,0.015,0.0001,0.0331,0.457,1,False
+Abandonment rate,Team,Bravo,587,394,0.029,0.061,0.032,0.0085,0.0079,0.0006,0.0331,0.255,2,False
+Abandonment rate,Team,Alpha,637,365,0.047,0.077,0.03,0.0057,0.0073,-0.0017,0.0331,0.172,3,False
+Abandonment rate,Team,Delta,587,394,0.037,0.051,0.013,0.0038,0.0033,0.0006,0.0331,0.116,4,False
+Abandonment rate,Tenure band,2-5 yrs,872,578,0.03,0.069,0.039,0.0151,0.0144,0.0007,0.0331,0.455,1,False
+Abandonment rate,Tenure band,5-10 yrs,863,510,0.037,0.075,0.037,0.0113,0.0128,-0.0015,0.0331,0.341,2,False
+Abandonment rate,Tenure band,10+ yrs,365,254,0.036,0.059,0.023,0.0043,0.0037,0.0006,0.0331,0.13,3,False
+Abandonment rate,Tenure band,0-2 yrs,337,213,0.047,0.066,0.018,0.0024,0.0025,-0.0001,0.0331,0.074,4,False
+Avg satisfaction,Channel,Phone,330,218,2.8,2.468,-0.332,-0.1877,-0.1649,-0.0228,-0.1466,1.28,1,False
+Avg satisfaction,Channel,Digital,161,103,2.814,2.68,-0.134,-0.0644,-0.032,-0.0324,-0.1466,0.439,2,False
+Avg satisfaction,Channel,Chat,81,56,2.765,2.893,0.127,0.0258,0.0159,0.0099,-0.1466,-0.176,3,False
+Avg satisfaction,Channel,Branch,87,66,2.851,3.061,0.21,0.0797,0.0295,0.0501,-0.1466,-0.543,4,False
+Avg satisfaction,Digital adoption,Low (<0.40),180,101,2.844,2.743,-0.102,-0.1517,-0.0255,-0.1261,-0.1466,1.034,1,False
+Avg satisfaction,Digital adoption,High (0.70+),197,122,2.695,2.5,-0.195,-0.1173,-0.0561,-0.0612,-0.1466,0.8,2,False
+Avg satisfaction,Digital adoption,Medium (0.40-0.69),282,220,2.858,2.709,-0.149,0.1223,-0.0689,0.1912,-0.1466,-0.834,3,False
+Avg satisfaction,Product,Credit Card,155,99,2.748,2.384,-0.365,-0.1137,-0.0836,-0.0301,-0.1466,0.775,1,False
+Avg satisfaction,Product,Personal Loan,97,60,2.629,2.6,-0.029,-0.0348,-0.0041,-0.0307,-0.1466,0.237,2,False
+Avg satisfaction,Product,Auto Loan,105,72,2.829,2.611,-0.217,-0.0263,-0.035,0.0087,-0.1466,0.179,3,False
+Avg satisfaction,Product,Checking,169,122,2.864,2.689,-0.175,0.006,-0.0466,0.0526,-0.1466,-0.041,4,False
+Avg satisfaction,Product,Digital Banking,133,90,2.91,3.0,0.09,0.0222,0.0183,0.004,-0.1466,-0.152,5,False
+Avg satisfaction,Reason,Loan Servicing,115,71,2.957,2.38,-0.576,-0.1344,-0.0965,-0.038,-0.1466,0.917,1,False
+Avg satisfaction,Reason,Access/Login,107,64,2.981,2.625,-0.356,-0.1048,-0.0547,-0.0502,-0.1466,0.715,2,False
+Avg satisfaction,Reason,Card Issue,115,76,2.757,2.632,-0.125,-0.0296,-0.0216,-0.0079,-0.1466,0.202,3,False
+Avg satisfaction,Reason,Payment,124,85,2.605,2.412,-0.193,-0.0274,-0.0367,0.0093,-0.1466,0.187,4,False
+Avg satisfaction,Reason,Account Inquiry,99,64,2.909,2.984,0.075,-0.0059,0.0111,-0.017,-0.1466,0.04,5,False
+Avg satisfaction,Reason,Transfer,99,83,2.646,2.952,0.305,0.1555,0.0515,0.1039,-0.1466,-1.06,6,False
+Avg satisfaction,Region,Central,219,141,2.858,2.624,-0.234,-0.1147,-0.0762,-0.0385,-0.1466,0.782,1,False
+Avg satisfaction,Region,North,233,154,2.871,2.617,-0.254,-0.1055,-0.0892,-0.0163,-0.1466,0.719,2,False
+Avg satisfaction,Region,South,207,148,2.676,2.736,0.06,0.0736,0.0195,0.0541,-0.1466,-0.502,3,False
+Avg satisfaction,Segment,Mass,240,145,2.763,2.752,-0.011,-0.1054,-0.0037,-0.1017,-0.1466,0.719,1,False
+Avg satisfaction,Segment,Established,149,94,2.859,2.755,-0.104,-0.0618,-0.0227,-0.039,-0.1466,0.421,2,False
+Avg satisfaction,Segment,Affluent,82,54,2.951,2.537,-0.414,-0.058,-0.051,-0.007,-0.1466,0.395,3,False
+Avg satisfaction,Segment,Emerging,188,150,2.755,2.553,-0.202,0.0785,-0.063,0.1415,-0.1466,-0.536,4,False
+Avg satisfaction,Team,Alpha,183,111,2.836,2.55,-0.287,-0.1487,-0.0757,-0.0731,-0.1466,1.014,1,False
+Avg satisfaction,Team,Charlie,171,113,2.901,2.549,-0.352,-0.1025,-0.0905,-0.012,-0.1466,0.699,2,False
+Avg satisfaction,Team,Bravo,174,111,2.69,2.676,-0.014,-0.0397,-0.0036,-0.0361,-0.1466,0.271,3,False
+Avg satisfaction,Team,Delta,131,108,2.794,2.87,0.076,0.1444,0.0169,0.1275,-0.1466,-0.985,4,False
+Avg satisfaction,Tenure band,2-5 yrs,235,148,2.868,2.561,-0.307,-0.1672,-0.1061,-0.0611,-0.1466,1.141,1,False
+Avg satisfaction,Tenure band,0-2 yrs,102,58,2.951,2.828,-0.123,-0.0865,-0.0176,-0.0689,-0.1466,0.59,2,False
+Avg satisfaction,Tenure band,5-10 yrs,227,151,2.714,2.556,-0.157,-0.0634,-0.0539,-0.0095,-0.1466,0.433,3,False
+Avg satisfaction,Tenure band,10+ yrs,95,86,2.716,2.895,0.18,0.1706,0.0304,0.1402,-0.1466,-1.163,4,False
+Avg wait (s),Channel,Phone,1212,767,50.89,83.151,32.261,15.8163,16.0108,-0.1945,16.4797,0.96,1,False
+Avg wait (s),Channel,Chat,322,224,48.233,48.835,0.602,0.6792,0.0833,0.5959,16.4797,0.041,2,False
+Avg wait (s),Channel,Branch,309,193,14.46,14.813,0.354,0.0096,0.0445,-0.0349,16.4797,0.001,3,False
+Avg wait (s),Channel,Digital,592,366,14.676,15.003,0.327,-0.0254,0.0784,-0.1038,16.4797,-0.002,4,False
+Avg wait (s),Digital adoption,Medium (0.40-0.69),1036,711,37.148,54.834,17.686,9.348,7.8189,1.5291,16.4797,0.567,1,False
+Avg wait (s),Digital adoption,High (0.70+),717,463,36.523,53.121,16.598,5.1133,4.9227,0.1907,16.4797,0.31,2,False
+Avg wait (s),Digital adoption,Low (<0.40),682,376,37.674,51.819,14.145,2.0184,3.6964,-1.6781,16.4797,0.122,3,False
+Avg wait (s),Product,Credit Card,576,366,36.911,80.036,43.124,10.1673,10.1919,-0.0246,16.4797,0.617,1,False
+Avg wait (s),Product,Digital Banking,498,339,36.984,47.593,10.609,2.8452,2.245,0.6002,16.4797,0.173,2,False
+Avg wait (s),Product,Personal Loan,305,203,35.948,46.064,10.116,1.5302,1.296,0.2342,16.4797,0.093,3,False
+Avg wait (s),Product,Auto Loan,413,253,34.787,44.486,9.699,1.3611,1.6141,-0.253,16.4797,0.083,4,False
+Avg wait (s),Product,Checking,643,389,39.434,43.787,4.353,0.5759,1.1209,-0.545,16.4797,0.035,5,False
+Avg wait (s),Reason,Payment,422,308,37.408,76.101,38.693,8.639,7.1972,1.4418,16.4797,0.524,1,False
+Avg wait (s),Reason,Card Issue,413,255,36.063,52.878,16.815,2.5827,2.8092,-0.2265,16.4797,0.157,2,False
+Avg wait (s),Reason,Access/Login,397,246,35.977,50.472,14.494,2.1446,2.3317,-0.1871,16.4797,0.13,3,False
+Avg wait (s),Reason,Transfer,405,286,39.958,46.969,7.011,2.0205,1.2298,0.7907,16.4797,0.123,4,False
+Avg wait (s),Reason,Loan Servicing,419,239,35.403,46.519,11.115,1.0809,1.8133,-0.7324,16.4797,0.066,5,False
+Avg wait (s),Reason,Account Inquiry,379,216,37.958,42.481,4.524,0.012,0.6672,-0.6553,16.4797,0.001,6,False
+Avg wait (s),Region,Central,784,519,35.657,53.759,18.102,6.5202,5.9449,0.5753,16.4797,0.396,1,False
+Avg wait (s),Region,South,762,501,37.924,52.627,14.703,5.1426,4.6767,0.4659,16.4797,0.312,2,False
+Avg wait (s),Region,North,889,530,37.697,54.338,16.64,4.817,5.8826,-1.0656,16.4797,0.292,3,False
+Avg wait (s),Segment,Mass,901,575,36.921,55.717,18.795,7.0074,6.9636,0.0439,16.4797,0.425,1,False
+Avg wait (s),Segment,Emerging,695,467,37.686,54.919,17.232,5.79,5.0552,0.7348,16.4797,0.351,2,False
+Avg wait (s),Segment,Established,542,326,36.631,49.776,13.145,2.3154,2.8453,-0.5299,16.4797,0.141,3,False
+Avg wait (s),Segment,Affluent,297,182,37.219,50.302,13.083,1.3668,1.566,-0.1992,16.4797,0.083,4,False
+Avg wait (s),Team,Charlie,625,399,37.205,58.544,21.339,5.5208,5.4851,0.0357,16.4797,0.335,1,False
+Avg wait (s),Team,Delta,587,394,36.157,53.464,17.308,4.8741,4.2859,0.5882,16.4797,0.296,2,False
+Avg wait (s),Team,Bravo,586,393,37.311,51.089,13.778,3.9745,3.4047,0.5698,16.4797,0.241,3,False
+Avg wait (s),Team,Alpha,637,364,37.716,51.0,13.284,2.1102,3.2974,-1.1871,16.4797,0.128,4,False
+Avg wait (s),Tenure band,2-5 yrs,872,576,37.093,55.266,18.173,7.2541,6.6305,0.6235,16.4797,0.44,1,False
+Avg wait (s),Tenure band,5-10 yrs,862,508,37.794,53.364,15.571,4.1106,5.3076,-1.197,16.4797,0.249,2,False
+Avg wait (s),Tenure band,10+ yrs,364,253,38.404,50.968,12.565,2.5785,1.9645,0.6139,16.4797,0.156,3,False
+Avg wait (s),Tenure band,0-2 yrs,337,213,34.018,52.718,18.701,2.5365,2.579,-0.0425,16.4797,0.154,4,False
+Resolution rate,Channel,Phone,1214,769,0.813,0.754,-0.059,-0.032,-0.0292,-0.0028,-0.0268,1.196,1,False
+Resolution rate,Channel,Branch,309,195,0.803,0.8,-0.003,-0.0014,-0.0003,-0.0011,-0.0268,0.054,2,False
+Resolution rate,Channel,Digital,592,367,0.779,0.801,0.022,-0.0001,0.0054,-0.0055,-0.0268,0.004,3,False
+Resolution rate,Channel,Chat,322,224,0.82,0.799,-0.021,0.0068,-0.0029,0.0097,-0.0268,-0.253,4,False
+Resolution rate,Digital adoption,Low (<0.40),682,377,0.804,0.798,-0.005,-0.0313,-0.0013,-0.03,-0.0268,1.169,1,False
+Resolution rate,Digital adoption,High (0.70+),719,464,0.807,0.782,-0.024,-0.0046,-0.0072,0.0027,-0.0268,0.17,2,False
+Resolution rate,Digital adoption,Medium (0.40-0.69),1036,714,0.803,0.763,-0.04,0.0091,-0.0176,0.0267,-0.0268,-0.339,3,False
+Resolution rate,Product,Credit Card,576,367,0.804,0.717,-0.087,-0.0209,-0.0206,-0.0003,-0.0268,0.779,1,False
+Resolution rate,Product,Checking,645,392,0.803,0.814,0.011,-0.0074,0.0028,-0.0102,-0.0268,0.277,2,False
+Resolution rate,Product,Personal Loan,305,204,0.797,0.711,-0.086,-0.0065,-0.011,0.0045,-0.0268,0.241,3,False
+Resolution rate,Product,Auto Loan,413,253,0.78,0.798,0.019,-0.0022,0.0031,-0.0053,-0.0268,0.083,4,False
+Resolution rate,Product,Digital Banking,498,339,0.831,0.826,-0.005,0.0102,-0.0011,0.0113,-0.0268,-0.38,5,False
+Resolution rate,Reason,Account Inquiry,379,217,0.818,0.774,-0.044,-0.0192,-0.0065,-0.0127,-0.0268,0.716,1,False
+Resolution rate,Reason,Loan Servicing,419,239,0.804,0.778,-0.026,-0.0187,-0.0042,-0.0144,-0.0268,0.697,2,False
+Resolution rate,Reason,Access/Login,397,246,0.841,0.785,-0.057,-0.0129,-0.0091,-0.0038,-0.0268,0.483,3,False
+Resolution rate,Reason,Card Issue,414,256,0.754,0.805,0.051,0.0044,0.0085,-0.0041,-0.0268,-0.166,4,False
+Resolution rate,Reason,Transfer,405,287,0.83,0.787,-0.042,0.0075,-0.0074,0.0149,-0.0268,-0.279,5,False
+Resolution rate,Reason,Payment,423,310,0.783,0.742,-0.041,0.0121,-0.0076,0.0197,-0.0268,-0.451,6,False
+Resolution rate,Region,North,891,531,0.8,0.768,-0.032,-0.0302,-0.0113,-0.0189,-0.0268,1.128,1,False
+Resolution rate,Region,South,762,504,0.816,0.772,-0.044,-0.0051,-0.0142,0.0091,-0.0268,0.189,2,False
+Resolution rate,Region,Central,784,520,0.797,0.792,-0.005,0.0085,-0.0016,0.0101,-0.0268,-0.317,3,False
+Resolution rate,Segment,Established,542,326,0.808,0.752,-0.057,-0.0222,-0.0122,-0.0099,-0.0268,0.828,1,False
+Resolution rate,Segment,Mass,902,577,0.816,0.804,-0.012,-0.0036,-0.0044,0.0008,-0.0268,0.135,2,False
+Resolution rate,Segment,Affluent,297,184,0.761,0.755,-0.006,-0.0033,-0.0007,-0.0027,-0.0268,0.125,3,False
+Resolution rate,Segment,Emerging,696,468,0.805,0.771,-0.033,0.0024,-0.0097,0.0121,-0.0268,-0.088,4,False
+Resolution rate,Team,Alpha,637,365,0.796,0.767,-0.029,-0.028,-0.0071,-0.0208,-0.0268,1.045,1,False
+Resolution rate,Team,Charlie,626,402,0.839,0.776,-0.063,-0.0148,-0.0161,0.0013,-0.0268,0.552,2,False
+Resolution rate,Team,Bravo,587,394,0.796,0.769,-0.027,0.0032,-0.0066,0.0098,-0.0268,-0.12,3,False
+Resolution rate,Team,Delta,587,394,0.785,0.797,0.012,0.0128,0.0029,0.0099,-0.0268,-0.477,4,False
+Resolution rate,Tenure band,5-10 yrs,863,510,0.809,0.769,-0.04,-0.0343,-0.0137,-0.0206,-0.0268,1.282,1,False
+Resolution rate,Tenure band,2-5 yrs,872,578,0.813,0.782,-0.031,-0.0003,-0.0113,0.0111,-0.0268,0.01,2,False
+Resolution rate,Tenure band,0-2 yrs,337,213,0.786,0.808,0.021,0.0019,0.0029,-0.001,-0.0268,-0.07,3,False
+Resolution rate,Tenure band,10+ yrs,365,254,0.789,0.76,-0.029,0.0059,-0.0046,0.0105,-0.0268,-0.222,4,False

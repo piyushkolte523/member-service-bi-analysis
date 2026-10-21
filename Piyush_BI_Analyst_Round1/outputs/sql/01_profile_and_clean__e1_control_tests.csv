@@ -1,0 +1,9 @@
+test,result
+PK unique in analysis set,PASS
+Row count = raw minus exact duplicates (4004-12),PASS
+Join preserved rows (no fan-out),PASS
+Every interaction matched a member,PASS
+No UNMAPPED channels,PASS
+Exactly one outcome flag per row,PASS
+Satisfaction within 1-5 when present,PASS
+Members unique,PASS

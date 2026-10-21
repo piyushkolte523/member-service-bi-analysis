@@ -1,0 +1,8 @@
+hypothesis,verdict,evidence
+H1 Volume overwhelmed operation,Rejected,"Other phone +24% volume, wait flat; hot spot +32% volume, wait +166%"
+H2 One team,Rejected,All 4 teams ~50s -> ~135-140s on hot-spot contacts
+H3 Member mix,Rejected,Hot-spot effect ~+85s with all controls; mix < 0.5s
+H4 Timing,Step change,"Change point 2026-05-01; 51s -> 138s, no recovery"
+H5 Wait drives outcomes,Supported (association),"Abandonment ~3-8% below 120s, ~24% above"
+H6 Repeats = failure demand,Mostly rejected,Any-reason repeat ~ random-timing baseline; same-reason up ~40%
+H7 CSAT reliable,Not reliable for targets,"28% response, ~1.5 pts below target every month"

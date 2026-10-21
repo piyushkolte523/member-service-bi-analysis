@@ -1,0 +1,16 @@
+interaction_id,interaction_date,month,period,member_id,segment,region,channel,product,reason,team,wait_seconds,handle_seconds,outcome,satisfaction,estimated_cost,days_to_next_contact,is_repeat_7d,is_same_reason_repeat_7d,is_return_contact_7d,repeat_window_complete
+I000001,2026-01-01,2026-01,1) Jan-Apr,M0383,Mass,North,Digital,Checking,Payment,Alpha,7,517,Transferred,,9.2,1,1,0,0,1
+I000002,2026-01-01,2026-01,1) Jan-Apr,M0311,Emerging,Central,Digital,Personal Loan,Payment,Alpha,14,549,Resolved,,6.59,13,0,0,0,1
+I000003,2026-01-01,2026-01,1) Jan-Apr,M0225,Mass,North,Chat,Checking,Payment,Delta,54,430,Resolved,,5.16,17,0,0,0,1
+I000004,2026-01-01,2026-01,1) Jan-Apr,M0396,Mass,Central,Phone,Credit Card,Payment,Delta,24,268,Resolved,,3.22,28,0,0,0,1
+I000005,2026-01-01,2026-01,1) Jan-Apr,M0216,Mass,North,Chat,Checking,Loan Servicing,Delta,28,483,Resolved,5,5.8,1,1,0,0,1
+I000006,2026-01-01,2026-01,1) Jan-Apr,M0158,Mass,South,Phone,Digital Banking,Access/Login,Charlie,64,549,Resolved,,6.59,6,1,0,0,1
+I000007,2026-01-01,2026-01,1) Jan-Apr,M0106,Established,North,Branch,Auto Loan,Access/Login,Bravo,17,381,Resolved,2,4.57,1,1,0,0,1
+I000008,2026-01-01,2026-01,1) Jan-Apr,M0375,Mass,North,Digital,Checking,Loan Servicing,Bravo,9,489,Resolved,,5.87,56,0,0,0,1
+I000009,2026-01-01,2026-01,1) Jan-Apr,M0320,Mass,South,Chat,Credit Card,Card Issue,Alpha,38,333,Resolved,5,4.0,13,0,0,0,1
+I000010,2026-01-01,2026-01,1) Jan-Apr,M0154,Established,South,Branch,Digital Banking,Account Inquiry,Charlie,36,364,Resolved,,4.37,27,0,0,0,1
+I000011,2026-01-01,2026-01,1) Jan-Apr,M0153,Established,North,Chat,Credit Card,Card Issue,Bravo,85,172,Resolved,1,2.06,18,0,0,0,1
+I000012,2026-01-01,2026-01,1) Jan-Apr,M0329,Affluent,South,Phone,Personal Loan,Account Inquiry,Bravo,50,374,Resolved,,4.49,28,0,0,0,1
+I000013,2026-01-01,2026-01,1) Jan-Apr,M0289,Emerging,South,Phone,Credit Card,Transfer,Delta,76,409,Abandoned,,4.91,12,0,0,0,1
+I000014,2026-01-01,2026-01,1) Jan-Apr,M0371,Mass,South,Digital,Auto Loan,Payment,Alpha,13,629,Resolved,1,7.55,41,0,0,0,1
+I000015,2026-01-02,2026-01,1) Jan-Apr,M0208,Established,North,Digital,Personal Loan,Payment,Bravo,4,394,Resolved,,4.73,45,0,0,0,1

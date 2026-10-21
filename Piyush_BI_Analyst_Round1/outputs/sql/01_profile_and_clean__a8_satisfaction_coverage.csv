@@ -1,0 +1,9 @@
+dimension,value,interactions,survey_responses,response_rate,avg_score
+Channel,branch,504,153,0.304,2.94
+Channel,chat,547,137,0.25,2.82
+Channel,digital,963,266,0.276,2.76
+Channel,phone,1990,549,0.276,2.67
+Outcome,Abandoned,194,54,0.278,2.06
+Outcome,Escalated,258,83,0.322,2.0
+Outcome,Resolved,3180,862,0.271,2.95
+Outcome,Transferred,372,106,0.285,1.98
